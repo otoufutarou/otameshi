@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f2ed">
+    <meta name="description" content="好きな私で、毎日をもっと自由に。ファッションとビューティーの最新トレンドを届けるViVi風エディトリアル。">
+    <title>ViVi — 好きな私で、いこう。</title>
+    <link rel="preconnect" href="https://github.com">
+    <link rel="preconnect" href="https://user-images.githubusercontent.com">
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #201d1d;
+        --muted: #817b78;
+        --paper: #f7f2ed;
+        --pink: #ed4774;
+        --line: #ded7d1;
+        --serif: "Bodoni 72", "Didot", "Times New Roman", serif;
+        --sans: "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+      .site-header {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        padding: 0 6.2%;
+        border-bottom: 1px solid var(--line);
+      }
+      .wordmark {
+        font-family: var(--serif);
+        font-size: 39px;
+        font-weight: 700;
+        letter-spacing: -3px;
+        line-height: 1;
+      }
+      .header-note {
+        margin-left: 12px;
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+      }
+      .brand { display: flex; align-items: center; }
+      .nav {
+        display: flex;
+        gap: clamp(18px, 3vw, 44px);
+        align-items: center;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: .12em;
+      }
+      .nav a { transition: color .2s ease; }
+      .nav a:hover { color: var(--pink); }
+      .nav .search { color: var(--pink); font-size: 17px; }
+      .issue-line {
+        display: flex;
+        justify-content: space-between;
+        padding: 13px 6.2%;
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: .16em;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(270px, .78fr) minmax(0, 1.22fr);
+        max-width: 1440px;
+        min-height: min(750px, calc(100vh - 130px));
+        margin: 0 auto;
+        padding: 12px 6.2% 70px;
+        gap: 5.5%;
+      }
+      .hero-copy {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 16px 0 40px;
+      }
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--pink);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .2em;
+      }
+      .eyebrow::before { width: 24px; height: 1px; background: currentColor; content: ""; }
+      h1 {
+        position: relative;
+        z-index: 1;
+        margin: 27px -105px 20px 0;
+        font-size: clamp(44px, 6.3vw, 88px);
+        font-weight: 800;
+        letter-spacing: -.09em;
+        line-height: 1.16;
+      }
+      h1 .accent { color: var(--pink); }
+      .hero-en {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-family: var(--serif);
+        font-size: 19px;
+        font-style: italic;
+        letter-spacing: .02em;
+      }
+      .hero-description {
+        max-width: 300px;
+        margin: 0;
+        color: #625c59;
+        font-size: 12px;
+        line-height: 2.2;
+        letter-spacing: .07em;
+      }
+      .read-link {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 18px;
+        margin-top: 31px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--ink);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .13em;
+      }
+      .read-link span { color: var(--pink); font-size: 17px; }
+      .hero-index {
+        position: absolute;
+        bottom: 11px;
+        left: 0;
+        color: #a8a09b;
+        font-family: var(--serif);
+        font-size: 12px;
+        letter-spacing: .08em;
+      }
+      .hero-image-wrap {
+        position: relative;
+        min-height: 550px;
+        height: min(690px, 76vh);
+        background: #322e2d;
+      }
+      .hero-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 36%;
+      }
+      .image-caption {
+        position: absolute;
+        right: -15px;
+        bottom: 24px;
+        padding: 12px 18px;
+        background: var(--paper);
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: .12em;
+        writing-mode: vertical-rl;
+      }
+      .image-caption strong {
+        margin-bottom: 8px;
+        color: var(--pink);
+        font-family: var(--serif);
+        font-size: 15px;
+        font-weight: 400;
+      }
+      .feature-strip {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .feature {
+        display: flex;
+        min-height: 118px;
+        align-items: center;
+        gap: 17px;
+        padding: 20px 8%;
+        border-right: 1px solid var(--line);
+      }
+      .feature:first-child { padding-left: 12%; }
+      .feature:last-child { border-right: 0; }
+      .feature-number {
+        color: var(--pink);
+        font-family: var(--serif);
+        font-size: 27px;
+        font-style: italic;
+      }
+      .feature-label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--muted);
+        font-size: 8px;
+        letter-spacing: .16em;
+      }
+      .feature h2 { margin: 0; font-size: 13px; letter-spacing: .04em; }
+      .latest {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        padding: 88px 10% 34px;
+      }
+      .section-kicker {
+        margin: 0 0 9px;
+        color: var(--pink);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: .2em;
+      }
+      .latest h2 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 44px);
+        letter-spacing: -.06em;
+      }
+      .latest .more {
+        padding-bottom: 7px;
+        border-bottom: 1px solid var(--ink);
+        font-size: 9px;
+        letter-spacing: .14em;
+      }
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1.15fr .85fr;
+        gap: 24px;
+        padding: 0 10% 100px;
+      }
+      .story {
+        position: relative;
+        display: flex;
+        min-height: 260px;
+        flex-direction: column;
+        justify-content: end;
+        overflow: hidden;
+        padding: 32px;
+        background: #e9d8d3;
+      }
+      .story:first-child {
+        background: linear-gradient(115deg, rgba(35, 28, 28, .62), rgba(35, 28, 28, .08)), url("https://github.com/user-attachments/assets/cffffaa9-b50c-4636-aa3e-004a7f9a2aef") center 34% / cover;
+        color: white;
+      }
+      .story:last-child { background: #e8e2dc; }
+      .story-tag {
+        width: fit-content;
+        margin-bottom: 12px;
+        padding: 6px 9px;
+        background: var(--pink);
+        color: white;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: .15em;
+      }
+      .story h3 { max-width: 440px; margin: 0; font-size: clamp(21px, 3vw, 34px); line-height: 1.45; }
+      .story:last-child h3 { max-width: 340px; color: var(--ink); }
+      .story p { margin: 11px 0 0; font-size: 10px; letter-spacing: .1em; opacity: .8; }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 24px 6.2%;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 8px;
+        letter-spacing: .12em;
+      }
+      @media (min-width: 1441px) {
+        .hero { min-height: 740px; }
+      }
+      @media (max-width: 760px) {
+        .site-header { min-height: 64px; padding: 0 6%; }
+        .wordmark { font-size: 34px; }
+        .header-note { display: none; }
+        .nav { gap: 16px; font-size: 9px; }
+        .nav a:nth-child(2), .nav a:nth-child(3) { display: none; }
+        .issue-line { padding: 11px 6%; font-size: 8px; }
+        .hero { grid-template-columns: 1fr; gap: 22px; padding: 24px 6% 45px; }
+        .hero-copy { order: 2; padding: 8px 5px 35px; }
+        h1 { margin: 18px 0 12px; font-size: clamp(45px, 12vw, 72px); }
+        .hero-en { margin-bottom: 11px; font-size: 16px; }
+        .hero-description { max-width: 100%; }
+        .read-link { margin-top: 20px; }
+        .hero-index { bottom: 0; }
+        .hero-image-wrap { order: 1; height: 112vw; min-height: 0; max-height: 650px; }
+        .image-caption { right: -8px; bottom: 17px; }
+        .feature-strip { grid-template-columns: 1fr; }
+        .feature, .feature:first-child { min-height: 80px; padding: 15px 8%; border-right: 0; border-bottom: 1px solid var(--line); }
+        .feature:last-child { border-bottom: 0; }
+        .feature-number { font-size: 23px; }
+        .latest { padding: 58px 7% 25px; }
+        .latest .more { font-size: 8px; }
+        .story-grid { grid-template-columns: 1fr; gap: 12px; padding: 0 7% 65px; }
+        .story { min-height: 230px; padding: 24px; }
+        footer { gap: 12px; padding: 20px 6%; font-size: 7px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="ViVi ホーム">
+        <span class="wordmark">ViVi</span>
+        <span class="header-note">Fashion is my attitude</span>
+      </a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <a href="#fashion">FASHION</a>
+        <a href="#beauty">BEAUTY</a>
+        <a href="#lifestyle">LIFESTYLE</a>
+        <a class="search" href="#latest" aria-label="最新記事へ">⌕</a>
+      </nav>
+    </header>
+    <div class="issue-line" aria-label="最新号情報">
+      <span>THE NEW SEASON ISSUE</span>
+      <span>VOL. 01 — AUTUMN / WINTER</span>
+    </div>
+
+    <main>
+      <section class="hero" id="fashion" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">FASHION STORY</p>
+          <h1 id="hero-title">好きな私で、<br><span class="accent">いこう。</span></h1>
+          <p class="hero-en">My style, my rules.</p>
+          <p class="hero-description">ラフに、きれいに、自分らしく。<br>いつもの毎日をちょっと特別にする、<br>秋のニューベーシック。</p>
+          <a class="read-link" href="#latest">READ THE STORY <span aria-hidden="true">↗</span></a>
+          <span class="hero-index">01 / 03 &nbsp; — &nbsp; EDITOR'S PICK</span>
+        </div>
+        <div class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="https://github.com/user-attachments/assets/cffffaa9-b50c-4636-aa3e-004a7f9a2aef"
+            alt="グレージャケットとワイドパンツを着こなすモデル"
+            fetchpriority="high"
+          >
+          <div class="image-caption"><strong>NEW</strong>SEASON, NEW YOU</div>
+        </div>
+      </section>
+
+      <section class="feature-strip" id="beauty" aria-label="今月の特集">
+        <article class="feature">
+          <span class="feature-number">01</span>
+          <div><span class="feature-label">THE NEW STANDARD</span><h2>抜け感ジャケットの正解</h2></div>
+        </article>
+        <article class="feature">
+          <span class="feature-number">02</span>
+          <div><span class="feature-label">BEAUTY MOOD</span><h2>肌になじむ、秋のツヤメイク</h2></div>
+        </article>
+        <article class="feature">
+          <span class="feature-number">03</span>
+          <div><span class="feature-label">EDITOR'S NOTE</span><h2>私らしさを楽しむヒント</h2></div>
+        </article>
+      </section>
+
+      <section id="latest">
+        <div class="latest">
+          <div>
+            <p class="section-kicker">PICK UP STORIES</p>
+            <h2>今、読みたいこと。</h2>
+          </div>
+          <a class="more" href="#lifestyle">VIEW ALL &nbsp; ↗</a>
+        </div>
+        <div class="story-grid" id="lifestyle">
+          <article class="story">
+            <span class="story-tag">FASHION</span>
+            <h3>頑張りすぎないのに、<br>ちゃんとおしゃれ。</h3>
+            <p>この秋の相棒は、ちょっと大きめのジャケット。</p>
+          </article>
+          <article class="story">
+            <span class="story-tag">MY STYLE</span>
+            <h3>今日の私を好きになる<br>小さなアップデート。</h3>
+            <p>気分から始める、秋のおしゃれ計画。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <a href="#" class="wordmark" aria-label="ViVi ホーム">ViVi</a>
+      <span>© 2026 ViVi STYLE EDITORIAL</span>
+      <span>FASHION · BEAUTY · YOUR LIFE</span>
+    </footer>
+  </body>
+</html>
